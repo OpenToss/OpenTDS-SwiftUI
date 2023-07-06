@@ -52,7 +52,7 @@ public struct TossTabView<Content: TossTabItemViewProtocol>: View {
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color("Background"))
+                .background(TossColor.background)
                 
                 HStack {
                     Spacer()
@@ -72,10 +72,10 @@ public struct TossTabView<Content: TossTabItemViewProtocol>: View {
                 .background(Color(.systemBackground))
                 .cornerRadius(20)
                 .overlay(RoundedRectangle(cornerRadius: 20)
-                    .strokeBorder(Color("Stripe"), lineWidth: 0.3))
+                    .strokeBorder(TossColor.stripe, lineWidth: 0.3))
                 .padding(.bottom, geometry.safeAreaInsets.bottom <= 20 ? -100 : -113)
             }
         }
-        .background(Color("Background"))
+        .background(TossColor.background.ignoresSafeArea())
     }
 }

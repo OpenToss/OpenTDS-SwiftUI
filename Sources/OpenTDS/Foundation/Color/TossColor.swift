@@ -31,6 +31,6 @@ extension TossColor {
     public static let generalBackground: Color = dynamicColor("#F5F5F9", dark: "#FFFFFF")
     public static let label: Color             = dynamicColor("#1A1E27", dark: "#FFFFFF")
     public static let secondary: Color         = dynamicColor("#B1B8C0", dark: "#FFFFFF")
-    public static let stripe: Color            = dynamicColor("#FFFFFF", dark: "#FFFFFF")
-    public static let background: Color        = dynamicColor("#E5E8EB", dark: "#FFFFFF")
+    public static let stripe: Color            = dynamicColor("#E5E8EB", dark: "#FFFFFF")
+    public static let background: Color        = dynamicColor("#F2F4F6", dark: "#FFFFFF")
 }
