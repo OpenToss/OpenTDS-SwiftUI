@@ -1,5 +1,16 @@
 import SwiftUI
 
+/**
+    Toss의 탭뷰입니다.
+    2~5개의 View를 사용할 수 있습니다. tossTabItem Modifier는 필수입니다.
+ 
+        TossTabView {
+            HomeView()
+                .tossTabItem("홈", Image(systemName: "house.fill"))
+            MyView()
+                .tossTabItem("마이", Image(systemName: "person.fill"))
+        }
+ */
 @available(macOS 11, iOS 14, *)
 public struct TossTabView<Content: TossTabItemViewProtocol>: View {
     
