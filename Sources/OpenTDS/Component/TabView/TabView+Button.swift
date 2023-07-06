@@ -1,9 +1,10 @@
 import SwiftUI
 
 /**
-    Toss 탭뷰의 버튼입니다.
+    Animated Tab View Button of Toss.
+    It exists for TossTabView..
  
-        TossTabViewButton("홈", Image(systemName: "house.fill"), idx == selected) {
+        TossTabViewButton("Home", Image(systemName: "house.fill"), idx == selected) {
             anyMethod()
         }
  */
@@ -20,13 +21,11 @@ public struct TossTabViewButton: View {
     @State var rectangleState: Bool = false
     
     /**
-        탭뷰 버튼을 반환합니다.
-            
         - Parameters:
-           - label: 버튼 레이블입니다.
-           - image: 버튼 이미지입니다.
-           - selected: 버튼 하이라이트 여부입니다.
-           - action: 버튼을 눌렀을 때 실행할 액션입니다.
+           - label: Label of the Button.
+           - image: Image of the Button.
+           - selected: Highlight status of the Button.
+           - action: Action when the Button pressed.
      */
     public init(_ label: String,
                 _ image: Image,
