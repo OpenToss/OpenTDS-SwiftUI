@@ -1,4 +1,5 @@
-![OpenTDS](https://raw.githubusercontent.com/Mercen-Lee/OpenTDS/main/Resources/OpenTDSLogo.png)
+![OpenTDS](https://raw.githubusercontent.com/Mercen-Lee/OpenTDS/main/Resources/OpenTDSLogoDark.png#gh-dark-mode-only)
+![OpenTDS](https://raw.githubusercontent.com/Mercen-Lee/OpenTDS/main/Resources/OpenTDSLogoLight.png#gh-light-mode-only)
 
 ![Swift](https://img.shields.io/badge/Swift-5.5_5.6_5.7_5.8-Orange?style=flat-square)
 ![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS-yellowgreen?style=flat-square)
