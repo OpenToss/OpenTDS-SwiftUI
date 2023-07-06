@@ -17,25 +17,25 @@ public struct TossTabView<Content: TossTabItemViewProtocol>: View {
     @State var selected: Int = 0
     let content: [Content]
     
-    init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content)>)
+    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1]
     }
     
-    init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content)>)
+    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2]
     }
     
-    init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content, Content)>)
+    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content, Content)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2, cv.3]
     }
     
-    init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content, Content, Content)>)
+    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content, Content, Content)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2, cv.3, cv.4]
