@@ -14,30 +14,40 @@ import SwiftUI
         }
  */
 @available(macOS 11, iOS 14, *)
-public struct TossTabView<Content: TossTabItemViewProtocol>: View {
+public struct TossTabView: View {
     
     @State var selected: Int = 0
-    let content: [Content]
+    let content: [any TossTabItemViewProtocol]
     
-    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content)>)
+    public init<C0: TossTabItemViewProtocol,
+                C1: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1]
     }
     
-    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content)>)
+    public init<C0: TossTabItemViewProtocol,
+                C1: TossTabItemViewProtocol,
+                C2: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2]
     }
     
-    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content, Content)>)
+    public init<C0: TossTabItemViewProtocol,
+                C1: TossTabItemViewProtocol,
+                C2: TossTabItemViewProtocol,
+                C3: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2, cv.3]
     }
     
-    public init(@ViewBuilder content: @escaping () -> TupleView<(Content, Content, Content, Content, Content)>)
+    public init<C0: TossTabItemViewProtocol,
+                C1: TossTabItemViewProtocol,
+                C2: TossTabItemViewProtocol,
+                C3: TossTabItemViewProtocol,
+                C4: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3, C4)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2, cv.3, cv.4]
@@ -48,8 +58,17 @@ public struct TossTabView<Content: TossTabItemViewProtocol>: View {
             ZStack(alignment: .bottom) {
                 ZStack {
                     ForEach(0..<content.count, id: \.self) { idx in
-                        content[idx]
-                            .tossTransition(idx, selected)
+                        content[idx].content
+                            .offset(x: { () -> CGFloat in
+                                if idx == selected {
+                                    return 0
+                                } else if idx < selected {
+                                    return -10
+                                } else {
+                                    return 10
+                                }
+                            }())
+                            .opacity(idx == selected ? 1 : 0)
                     }
                     
                 }

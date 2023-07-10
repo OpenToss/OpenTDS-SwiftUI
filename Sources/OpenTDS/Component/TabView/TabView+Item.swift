@@ -5,7 +5,7 @@ public struct TossTabItemView<Content: View>: TossTabItemViewProtocol {
     
     public let title: String
     public let image: Image
-    let content: Content
+    public let content: AnyView
     
     public init(title: String,
          image: Image,
@@ -13,12 +13,10 @@ public struct TossTabItemView<Content: View>: TossTabItemViewProtocol {
     {
         self.title = title
         self.image = image
-        self.content = content()
+        self.content = AnyView(content())
     }
     
-    public var body: some View {
-        content
-    }
+    public var body: some View { EmptyView() }
 }
 
 @available(macOS 11, iOS 14, *)
@@ -35,4 +33,5 @@ public struct TossTabItemModifier: ViewModifier {
 public protocol TossTabItemViewProtocol: View {
     var title: String { get }
     var image: Image { get }
+    var content: AnyView { get }
 }
