@@ -70,7 +70,6 @@ public struct TossTabView: View {
                             }())
                             .opacity(idx == selected ? 1 : 0)
                     }
-                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(TossColor.background)
