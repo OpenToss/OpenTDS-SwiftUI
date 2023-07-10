@@ -20,7 +20,8 @@ public struct TossTabView: View {
     let content: [any TossTabItemViewProtocol]
     
     public init<C0: TossTabItemViewProtocol,
-                C1: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1)>)
+                C1: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
+                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1]
@@ -28,7 +29,8 @@ public struct TossTabView: View {
     
     public init<C0: TossTabItemViewProtocol,
                 C1: TossTabItemViewProtocol,
-                C2: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2)>)
+                C2: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
+                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2]
@@ -37,7 +39,8 @@ public struct TossTabView: View {
     public init<C0: TossTabItemViewProtocol,
                 C1: TossTabItemViewProtocol,
                 C2: TossTabItemViewProtocol,
-                C3: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3)>)
+                C3: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
+                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2, cv.3]
@@ -47,7 +50,8 @@ public struct TossTabView: View {
                 C1: TossTabItemViewProtocol,
                 C2: TossTabItemViewProtocol,
                 C3: TossTabItemViewProtocol,
-                C4: TossTabItemViewProtocol>(@ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3, C4)>)
+                C4: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
+                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3, C4)>)
     {
         let cv = content().value
         self.content = [cv.0, cv.1, cv.2, cv.3, cv.4]
@@ -77,7 +81,9 @@ public struct TossTabView: View {
                 HStack {
                     Spacer()
                     ForEach(0..<content.count, id: \.self) { idx in
-                        TossTabViewButton(content[idx].title, content[idx].image, idx == selected) {
+                        TossTabViewButton(content[idx].title,
+                                          content[idx].image,
+                                          idx == selected) {
                             if selected != idx {
                                 withAnimation(.easeInOut(duration: 0.2)) {
                                     selected = idx

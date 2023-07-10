@@ -15,6 +15,7 @@ public struct TossTabViewButton: View {
     let image: Image
     let action: () -> ()
     var selected: Bool
+    let haptic: UIImpactFeedbackGenerator.FeedbackStyle?
     @State var buttonRect: CGRect = CGRect.zero
     @State var animationState: Int = 0
     @State var touchdownState: Bool = false
@@ -30,12 +31,14 @@ public struct TossTabViewButton: View {
     public init(_ label: String,
                 _ image: Image,
                 _ selected: Bool,
+                haptic: UIImpactFeedbackGenerator.FeedbackStyle? = nil,
                 action: @escaping () -> ())
     {
         self.label = label
         self.image = image
         self.selected = selected
         self.action = action
+        self.haptic = haptic
     }
     
     public var head: some View {
@@ -84,7 +87,10 @@ public struct TossTabViewButton: View {
                     }
                     .onEnded { _ in
                         if touchdownState {
-                            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+                            if let haptic = haptic {
+                                UIImpactFeedbackGenerator(style: haptic)
+                                    .impactOccurred()
+                            }
                             action()
                         }
                         for i in 2..<5 {
