@@ -33,7 +33,7 @@ public struct TossScrollView<Content: View>: View {
             Text(title)
                 .font(.system(size: 17, weight: .medium))
                 .opacity(shrink ? 1 : 0)
-                .padding(.vertical, 12)
+                .padding(.vertical, 6)
                 .frame(maxWidth: .infinity)
             GeometryReader { outsideProxy in
                 ScrollView(showsIndicators: showsIndicators) {
@@ -46,7 +46,7 @@ public struct TossScrollView<Content: View>: View {
                                     DispatchQueue.main.async {
                                         let proxy = outsideProxy.frame(in: .global).minY - newValue
                                         withAnimation(.default) {
-                                            shrink = proxy > 36
+                                            shrink = proxy > 33
                                         }
                                     }
                                 }
