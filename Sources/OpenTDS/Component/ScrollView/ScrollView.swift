@@ -29,7 +29,7 @@ public struct TossScrollView<Content: View>: View {
                 @ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.showsIndicators = showsIndicators
-        self.showsDismiss = false
+        self.showsDismiss = showsDismiss
         self.content = content()
     }
     
