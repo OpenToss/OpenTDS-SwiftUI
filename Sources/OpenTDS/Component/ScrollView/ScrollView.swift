@@ -10,9 +10,12 @@ import SwiftUI
 @available(macOS 11, iOS 14, *)
 public struct TossScrollView<Content: View>: View {
     
+    @Environment(\.presentationMode) var presentationMode
     @State var shrink: Bool = false
+    
     let title: String
     let showsIndicators: Bool
+    let showsDismiss: Bool
     let content: Content
     
     /**
@@ -22,19 +25,35 @@ public struct TossScrollView<Content: View>: View {
      */
     public init(_ title: String,
                 showsIndicators: Bool = true,
+                showsDismiss: Bool = false,
                 @ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.showsIndicators = showsIndicators
+        self.showsDismiss = false
         self.content = content()
     }
     
     public var body: some View {
         VStack {
-            Text(title)
-                .font(.system(size: 17, weight: .medium))
-                .opacity(shrink ? 1 : 0)
-                .padding(.vertical, 6)
-                .frame(maxWidth: .infinity)
+            ZStack {
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        TossIcon.chevron
+                            .resizable()
+                            .frame(width: 10.14, height: 17.77)
+                            .foregroundColor(Color(.label))
+                    }
+                    Spacer()
+                }
+                .padding(.horizontal, 18)
+                Text(title)
+                    .font(.system(size: 17, weight: .medium))
+                    .opacity(shrink ? 1 : 0)
+                    .padding(.vertical, 6)
+            }
+            .frame(maxWidth: .infinity)
             GeometryReader { outsideProxy in
                 ScrollView(showsIndicators: showsIndicators) {
                     VStack(spacing: 36) {
@@ -46,7 +65,7 @@ public struct TossScrollView<Content: View>: View {
                                     DispatchQueue.main.async {
                                         let proxy = outsideProxy.frame(in: .global).minY - newValue
                                         withAnimation(.default) {
-                                            shrink = proxy > 33
+                                            shrink = proxy > 30
                                         }
                                     }
                                 }

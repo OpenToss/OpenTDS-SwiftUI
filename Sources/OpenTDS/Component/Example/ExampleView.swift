@@ -5,6 +5,7 @@ struct ExampleView: View {
         TossScrollView("전체") {
             Text("AnyView")
         }
+        .showDismiss()
     }
 }
 
