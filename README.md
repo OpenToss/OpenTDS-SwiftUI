@@ -52,5 +52,14 @@ TossTabViewButton("Home", Image(systemName: "house.fill"), true) {
 }
 ```
 
+### TossScrollView
+> Dynamic Scroll View of Toss.
+- Title string is necessary.
+```swift
+TossScrollView("Title") {
+    AnyView()
+}
+```
+
 ## Credits
 All credit related to the design goes to the [Toss Team](https://toss.im/team).
