@@ -37,13 +37,15 @@ public struct TossScrollView<Content: View>: View {
         VStack {
             ZStack {
                 HStack {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        TossIcon.chevron
-                            .resizable()
-                            .frame(width: 10.14, height: 17.77)
-                            .foregroundColor(Color(.label))
+                    if showsDismiss {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            TossIcon.chevron
+                                .resizable()
+                                .frame(width: 10.14, height: 17.77)
+                                .foregroundColor(Color(.label))
+                        }
                     }
                     Spacer()
                 }
