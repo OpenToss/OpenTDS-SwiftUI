@@ -28,6 +28,7 @@ dependencies: [
 ## Components
 - [TossTabView](#tosstabview)
 - [TossTabViewButton](#tosstabviewbutton)
+- [TossScrollView](#tossscrollview)
   
 ## Examples
 ### TossTabView
