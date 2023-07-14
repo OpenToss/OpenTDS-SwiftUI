@@ -17,6 +17,7 @@ import SwiftUI
 public struct TossTabView: View {
     
     @State var selected: Int = 0
+    
     let content: [any TossTabItemViewProtocol]
     
     public init<C0: TossTabItemViewProtocol,

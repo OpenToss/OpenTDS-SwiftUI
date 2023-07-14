@@ -11,15 +11,16 @@ import SwiftUI
 @available(macOS 11, iOS 14, *)
 public struct TossTabViewButton: View {
     
+    @State var buttonRect: CGRect = CGRect.zero
+    @State var animationState: Int = 0
+    @State var touchdownState: Bool = false
+    @State var rectangleState: Bool = false
+    
     let label: String
     let image: Image
     let action: () -> ()
     var selected: Bool
     let haptic: UIImpactFeedbackGenerator.FeedbackStyle?
-    @State var buttonRect: CGRect = CGRect.zero
-    @State var animationState: Int = 0
-    @State var touchdownState: Bool = false
-    @State var rectangleState: Bool = false
     
     /**
         - Parameters:
@@ -31,7 +32,7 @@ public struct TossTabViewButton: View {
     public init(_ label: String,
                 _ image: Image,
                 _ selected: Bool,
-                haptic: UIImpactFeedbackGenerator.FeedbackStyle? = nil,
+                haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
                 action: @escaping () -> ())
     {
         self.label = label

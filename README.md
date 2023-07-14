@@ -26,11 +26,27 @@ dependencies: [
 ```
 
 ## Components
+- [TossButton](#tossbutton)
 - [TossTabView](#tosstabview)
 - [TossTabViewButton](#tosstabviewbutton)
 - [TossScrollView](#tossscrollview)
   
 ## Examples
+```swift
+import OpenTDS
+```
+
+### TossButton
+> Animated Button of Toss.
+```swift
+TossButton(action: {
+    anyMethod()
+}) {
+    Text("Button")
+        .padding()
+}
+```
+
 ### TossTabView
 > Animated Tab View of Toss.
 - The number of Views must be between 2 and 5.
