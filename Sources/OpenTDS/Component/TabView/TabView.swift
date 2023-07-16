@@ -18,44 +18,12 @@ public struct TossTabView: View {
     
     @State var selected: Int = 0
     
-    let content: [any TossTabItemViewProtocol]
+    let content: [TossTabItem]
     
-    public init<C0: TossTabItemViewProtocol,
-                C1: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
-                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1)>)
+    public init(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
+                @TossTabViewBuilder content: () -> [TossTabItem])
     {
-        let cv = content().value
-        self.content = [cv.0, cv.1]
-    }
-    
-    public init<C0: TossTabItemViewProtocol,
-                C1: TossTabItemViewProtocol,
-                C2: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
-                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2)>)
-    {
-        let cv = content().value
-        self.content = [cv.0, cv.1, cv.2]
-    }
-    
-    public init<C0: TossTabItemViewProtocol,
-                C1: TossTabItemViewProtocol,
-                C2: TossTabItemViewProtocol,
-                C3: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
-                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3)>)
-    {
-        let cv = content().value
-        self.content = [cv.0, cv.1, cv.2, cv.3]
-    }
-    
-    public init<C0: TossTabItemViewProtocol,
-                C1: TossTabItemViewProtocol,
-                C2: TossTabItemViewProtocol,
-                C3: TossTabItemViewProtocol,
-                C4: TossTabItemViewProtocol>(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
-                                             @ViewBuilder content: @escaping () -> TupleView<(C0, C1, C2, C3, C4)>)
-    {
-        let cv = content().value
-        self.content = [cv.0, cv.1, cv.2, cv.3, cv.4]
+        self.content = content()
     }
     
     public var body: some View {
