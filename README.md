@@ -49,7 +49,7 @@ TossButton(action: {
 
 ### TossTabView
 > Animated Tab View of Toss.
-- The number of Views must be between 2 and 5.
+- Between 2 and 5 Views are recommended.
 - Every single View should have `.tossTabItem` Modifier.
 ```swift
 TossTabView {
