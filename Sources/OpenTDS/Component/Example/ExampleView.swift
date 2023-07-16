@@ -2,10 +2,14 @@ import SwiftUI
 
 struct ExampleView: View {
     var body: some View {
-        TossScrollView("전체") {
-            Text("AnyView")
+        TossTabView {
+            VStack {
+                Text("a")
+            }
+                .tossTabItem("Home", Image(systemName: "house.fill"))
+            Text("b")
+                .tossTabItem("My", Image(systemName: "person.fill"))
         }
-        .showDismiss()
     }
 }
 

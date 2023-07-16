@@ -1,8 +1,8 @@
 import SwiftUI
 
 @resultBuilder
-struct TossTabViewBuilder {
-    static func buildBlock(_ components: TossTabItem...) -> [TossTabItem] {
+public struct TossTabViewBuilder {
+    public static func buildBlock(_ components: TossTabItem...) -> [TossTabItem] {
         components
     }
 }
