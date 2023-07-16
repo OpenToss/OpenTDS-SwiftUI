@@ -9,12 +9,13 @@ import SwiftUI
  */
 @available(macOS 11, iOS 14, *)
 public struct TossScrollView<Content: View>: View {
-    
+
     @Environment(\.presentationMode) var presentationMode
     @State var shrink: Bool = false
     
     let title: String
     let showsIndicators: Bool
+    let backButtonExists: Bool
     let backButtonAction: (() -> ())?
     let content: Content
     
@@ -25,10 +26,12 @@ public struct TossScrollView<Content: View>: View {
      */
     public init(_ title: String,
                 showsIndicators: Bool = true,
+                backButtonExists: Bool = false,
                 backButtonAction: (() -> ())? = nil,
                 @ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.showsIndicators = showsIndicators
+        self.backButtonExists = backButtonExists
         self.backButtonAction = backButtonAction
         self.content = content()
     }
@@ -37,8 +40,14 @@ public struct TossScrollView<Content: View>: View {
         VStack {
             ZStack {
                 HStack {
-                    if let backButtonAction = backButtonAction {
-                        Button(action: backButtonAction) {
+                    if backButtonExists {
+                        Button(action: {
+                            if let backButtonAction = backButtonAction {
+                                backButtonAction()
+                            } else {
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                        }) {
                             TossIcon.chevron
                                 .resizable()
                                 .frame(width: 10.14, height: 17.77)
