@@ -15,7 +15,7 @@ public struct TossScrollView<Content: View>: View {
     
     let title: String
     let showsIndicators: Bool
-    let showsDismiss: Bool
+    let backButtonAction: (() -> ())?
     let content: Content
     
     /**
@@ -25,11 +25,11 @@ public struct TossScrollView<Content: View>: View {
      */
     public init(_ title: String,
                 showsIndicators: Bool = true,
-                showsDismiss: Bool = false,
+                backButtonAction: (() -> ())? = nil,
                 @ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.showsIndicators = showsIndicators
-        self.showsDismiss = showsDismiss
+        self.backButtonAction = backButtonAction
         self.content = content()
     }
     
@@ -37,10 +37,8 @@ public struct TossScrollView<Content: View>: View {
         VStack {
             ZStack {
                 HStack {
-                    if showsDismiss {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
+                    if let backButtonAction = backButtonAction {
+                        Button(action: backButtonAction) {
                             TossIcon.chevron
                                 .resizable()
                                 .frame(width: 10.14, height: 17.77)
