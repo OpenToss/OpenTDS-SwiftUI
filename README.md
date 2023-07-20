@@ -5,6 +5,8 @@
 ![Platforms](https://img.shields.io/badge/Platforms-macOS_iOS-yellowgreen?style=flat-square)
 ![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square)
 
+> "Proof that Toss can be migrated to SwiftUI"
+
 OpenTDS is Toss Design System Clone for SwiftUI.
 
 ## Requirements
