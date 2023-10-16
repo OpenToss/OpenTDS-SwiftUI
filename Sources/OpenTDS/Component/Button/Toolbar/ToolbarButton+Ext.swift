@@ -7,7 +7,7 @@ public struct TossToolbarButtonBuilder {
         components
     }
     
-    static func buildOptional(_ component: TossToolbarButton?) -> TossToolbarButton? {
+    public static func buildOptional(_ component: TossToolbarButton?) -> TossToolbarButton? {
         return component ?? nil
     }
 }
