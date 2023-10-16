@@ -3,8 +3,8 @@ import SwiftUI
 public extension View {
     
     @ViewBuilder func tossTabViewBottomPadding() -> some View {
-        GeometryReader { proxy in
-            self.padding(.bottom, proxy.safeAreaInsets.bottom <= 20 ? 43 : 56)
+        GeometryReader { geometry in
+            self.padding(.bottom, geometry.safeAreaInsets.bottom <= 20 ? 62 : 49)
         }
     }
     
