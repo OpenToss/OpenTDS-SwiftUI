@@ -42,6 +42,10 @@ public struct TossScrollView<C: View>: View {
     public var body: some View {
         VStack {
             ZStack {
+                Text(title)
+                    .font(.system(size: 17, weight: .medium))
+                    .opacity(shrink ? 1 : 0)
+                    .padding(.vertical, 6)
                 HStack(spacing: 26) {
                     if backButtonExists {
                         Button(action: {
@@ -65,10 +69,6 @@ public struct TossScrollView<C: View>: View {
                     }
                 }
                 .padding(.horizontal, 18)
-                Text(title)
-                    .font(.system(size: 17, weight: .medium))
-                    .opacity(shrink ? 1 : 0)
-                    .padding(.vertical, 6)
             }
             .frame(maxWidth: .infinity)
             GeometryReader { outsideProxy in
