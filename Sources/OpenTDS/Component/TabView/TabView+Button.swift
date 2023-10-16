@@ -57,11 +57,11 @@ public struct TossTabViewButton: View {
                     .padding(2)
                     .scaleEffect(x: animationState == 2 ? 1.1 : 1, y: 1)
                     .scaleEffect(x: 1, y: animationState == 3 ? 1.05 : 1)
-                    .foregroundColor(selected || touchdownState ? TossColor.label : TossColor.tabViewButtonIcon)
+                    .foregroundColor(selected || touchdownState ? TossColor.label : TossColor.button)
                 Text(label)
                     .font(.system(size: 11, weight: .medium))
                     .scaleEffect(animationState == 2 ? 1.05 : 1)
-                    .foregroundColor(selected || touchdownState ? TossColor.label : TossColor.tabViewButtonLabel)
+                    .foregroundColor(selected || touchdownState ? TossColor.label : TossColor.buttonLabel)
             }
         }
         .frame(width: 56, height: 56)

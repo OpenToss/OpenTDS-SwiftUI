@@ -8,7 +8,7 @@ import SwiftUI
         }
  */
 @available(macOS 11, iOS 14, *)
-public struct TossScrollView<Content: View>: View {
+public struct TossScrollView<C: View>: View {
 
     @Environment(\.presentationMode) var presentationMode
     @State var shrink: Bool = false
@@ -17,7 +17,8 @@ public struct TossScrollView<Content: View>: View {
     let showsIndicators: Bool
     let backButtonExists: Bool
     let backButtonAction: (() -> ())?
-    let content: Content
+    let toolbarButton: [TossToolbarButton]?
+    let content: () -> C
     
     /**
         - Parameters:
@@ -28,18 +29,20 @@ public struct TossScrollView<Content: View>: View {
                 showsIndicators: Bool = true,
                 backButtonExists: Bool = false,
                 backButtonAction: (() -> ())? = nil,
-                @ViewBuilder content: @escaping () -> Content) {
+                toolbarButton: [TossToolbarButton]? = nil,
+                @ViewBuilder content: @escaping () -> C) {
         self.title = title
         self.showsIndicators = showsIndicators
         self.backButtonExists = backButtonExists
         self.backButtonAction = backButtonAction
-        self.content = content()
+        self.toolbarButton = toolbarButton
+        self.content = content
     }
     
     public var body: some View {
         VStack {
             ZStack {
-                HStack {
+                HStack(spacing: 26) {
                     if backButtonExists {
                         Button(action: {
                             if let backButtonAction = backButtonAction {
@@ -55,6 +58,11 @@ public struct TossScrollView<Content: View>: View {
                         }
                     }
                     Spacer()
+                    if let toolbarButton {
+                        ForEach(toolbarButton.indices, id: \.self) { idx in
+                            toolbarButton[idx]
+                        }
+                    }
                 }
                 .padding(.horizontal, 18)
                 Text(title)
@@ -79,7 +87,7 @@ public struct TossScrollView<Content: View>: View {
                                     }
                                 }
                         }
-                        content
+                        content()
                     }
                 }
             }

@@ -21,8 +21,7 @@ public struct TossTabView: View {
     let content: [TossTabItem]
     
     public init(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
-                @TossTabViewBuilder content: () -> [TossTabItem])
-    {
+                @TossTabViewBuilder content: () -> [TossTabItem]) {
         self.content = content()
     }
     

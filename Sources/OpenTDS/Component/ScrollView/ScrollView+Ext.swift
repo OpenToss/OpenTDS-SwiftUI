@@ -11,8 +11,19 @@ extension TossScrollView {
         TossScrollView(self.title,
                        showsIndicators: self.showsIndicators,
                        backButtonExists: true,
-                       backButtonAction: action) {
-            self.content
+                       backButtonAction: action,
+                       toolbarButton: self.toolbarButton) {
+            self.content()
+        }
+    }
+    
+    public func toolbarButton(@TossToolbarButtonBuilder content: () -> [TossToolbarButton]) -> TossScrollView {
+        TossScrollView(self.title,
+                       showsIndicators: self.showsIndicators,
+                       backButtonExists: self.backButtonExists,
+                       backButtonAction: self.backButtonAction,
+                       toolbarButton: content()) {
+            self.content()
         }
     }
 }
