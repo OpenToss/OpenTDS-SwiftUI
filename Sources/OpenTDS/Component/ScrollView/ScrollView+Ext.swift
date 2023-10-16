@@ -17,12 +17,13 @@ extension TossScrollView {
         }
     }
     
-    public func toolbarButton(@TossToolbarButtonBuilder content: () -> [TossToolbarButton]) -> TossScrollView {
+    public func toolbarButton(_ condition: Bool = true,
+                              @TossToolbarButtonBuilder content: () -> [TossToolbarButton]) -> TossScrollView {
         TossScrollView(self.title,
                        showsIndicators: self.showsIndicators,
                        backButtonExists: self.backButtonExists,
                        backButtonAction: self.backButtonAction,
-                       toolbarButton: content()) {
+                       toolbarButton: condition ? content() : nil) {
             self.content()
         }
     }
