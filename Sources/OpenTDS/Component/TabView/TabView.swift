@@ -27,7 +27,7 @@ public struct TossTabView: View {
     
     public var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
+            ZStack(alignment: .bottom) {
                 ZStack {
                     ForEach(content.indices, id: \.self) { idx in
                         content[idx].content
