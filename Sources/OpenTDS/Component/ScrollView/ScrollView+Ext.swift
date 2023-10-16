@@ -7,7 +7,7 @@ extension TossScrollView {
         self.backButton()
     }
     
-    public func backButton(action: (() -> ())? = nil) -> TossScrollView {
+    public func backButton(action: (() -> Void)? = nil) -> TossScrollView {
         TossScrollView(self.title,
                        showsIndicators: self.showsIndicators,
                        backButtonExists: true,

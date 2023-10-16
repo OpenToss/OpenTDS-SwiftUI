@@ -11,7 +11,7 @@ public struct TossToolbarButton: View {
            - image: Image of the Button.
            - action: Action when the Button pressed.
      */
-    public init(_ image: Image, action: @escaping () -> ()) {
+    public init(_ image: Image, action: @escaping () -> Void) {
         self.image = image
         self.action = action
     }

@@ -18,7 +18,7 @@ public struct TossTabViewButton: View {
     
     let label: String
     let image: Image
-    let action: () -> ()
+    let action: () -> Void
     var selected: Bool
     let haptic: UIImpactFeedbackGenerator.FeedbackStyle?
     
@@ -33,7 +33,7 @@ public struct TossTabViewButton: View {
                 _ image: Image,
                 _ selected: Bool,
                 haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
-                action: @escaping () -> ())
+                action: @escaping () -> Void)
     {
         self.label = label
         self.image = image

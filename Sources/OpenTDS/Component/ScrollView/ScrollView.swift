@@ -16,7 +16,7 @@ public struct TossScrollView<C: View>: View {
     let title: String
     let showsIndicators: Bool
     let backButtonExists: Bool
-    let backButtonAction: (() -> ())?
+    let backButtonAction: (() -> Void)?
     let toolbarButton: [TossToolbarButton]?
     let content: () -> C
     
@@ -28,7 +28,7 @@ public struct TossScrollView<C: View>: View {
     public init(_ title: String,
                 showsIndicators: Bool = true,
                 backButtonExists: Bool = false,
-                backButtonAction: (() -> ())? = nil,
+                backButtonAction: (() -> Void)? = nil,
                 toolbarButton: [TossToolbarButton]? = nil,
                 @ViewBuilder content: @escaping () -> C) {
         self.title = title
