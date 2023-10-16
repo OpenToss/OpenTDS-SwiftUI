@@ -26,6 +26,7 @@ public enum TossColor {
 
 extension TossColor {
 
+    public static let homeBackground: Color = dynamicColor("#F3F4F6", dark: "#101013")
     public static let tabViewButtonIcon: Color = dynamicColor("#B1B8C0", dark: "#62626D")
     public static let tabViewButtonLabel: Color = dynamicColor("#6D7582", dark: "#9E9EA4")
     public static let background: Color = dynamicColor("#FFFFFF", dark: "#17171C")
