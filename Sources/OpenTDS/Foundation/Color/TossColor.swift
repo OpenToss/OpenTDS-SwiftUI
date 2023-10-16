@@ -25,12 +25,11 @@ public enum TossColor {
 }
 
 extension TossColor {
-    
-    public static let main: Color              = dynamicColor("#3250FF", dark: "#FFFFFF")
-    public static let general: Color           = dynamicColor("#1A1E27", dark: "#FFFFFF")
-    public static let generalBackground: Color = dynamicColor("#F5F5F9", dark: "#FFFFFF")
-    public static let label: Color             = dynamicColor("#1A1E27", dark: "#FFFFFF")
-    public static let secondary: Color         = dynamicColor("#B1B8C0", dark: "#FFFFFF")
-    public static let stripe: Color            = dynamicColor("#E5E8EB", dark: "#FFFFFF")
-    public static let background: Color        = dynamicColor("#F2F4F6", dark: "#FFFFFF")
+
+    public static let tabViewButtonIcon: Color = dynamicColor("#B1B8C0", dark: "#62626D")
+    public static let tabViewButtonLabel: Color = dynamicColor("#6D7582", dark: "#9E9EA4")
+    public static let background: Color = dynamicColor("#FFFFFF", dark: "#17171C")
+    public static let label: Color = dynamicColor("#1A1E27", dark: "#FFFFFF")
+    public static let stripe: Color = dynamicColor("#E4E8EB", dark: "#3C3C47")
+    public static let secondaryBackground: Color = dynamicColor("#F2F3F5", dark: "#2C2C35")
 }

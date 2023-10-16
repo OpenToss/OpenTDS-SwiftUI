@@ -51,7 +51,7 @@ public struct TossScrollView<Content: View>: View {
                             TossIcon.chevron
                                 .resizable()
                                 .frame(width: 10.14, height: 17.77)
-                                .foregroundColor(Color(.label))
+                                .foregroundColor(TossColor.label)
                         }
                     }
                     Spacer()

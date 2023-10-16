@@ -30,7 +30,7 @@ public struct TossTabView: View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
                 ZStack {
-                    ForEach(0..<content.count, id: \.self) { idx in
+                    ForEach(content.indices, id: \.self) { idx in
                         content[idx].content
                             .offset(x: { () -> CGFloat in
                                 if idx == selected {
@@ -49,7 +49,7 @@ public struct TossTabView: View {
                 
                 HStack {
                     Spacer()
-                    ForEach(0..<content.count, id: \.self) { idx in
+                    ForEach(content.indices, id: \.self) { idx in
                         TossTabViewButton(content[idx].title,
                                           content[idx].image,
                                           idx == selected) {
@@ -64,7 +64,7 @@ public struct TossTabView: View {
                 }
                 .padding(.vertical, 3)
                 .padding(.bottom, 100)
-                .background(Color(.systemBackground))
+                .background(TossColor.background)
                 .cornerRadius(20)
                 .overlay(RoundedRectangle(cornerRadius: 20)
                     .strokeBorder(TossColor.stripe, lineWidth: 0.3))

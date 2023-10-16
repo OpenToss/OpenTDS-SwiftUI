@@ -3,18 +3,15 @@ import SwiftUI
 struct ExampleView: View {
     var body: some View {
         TossTabView {
-            VStack {
-                Text("a")
-            }
-                .tossTabItem("Home", Image(systemName: "house.fill"))
-            Text("b")
-                .tossTabItem("My", Image(systemName: "person.fill"))
+            Text("View1")
+                .tossTabItem("View1", Image(systemName: "house.fill"))
+            Text("View2")
+                .tossTabItem("View2", Image(systemName: "person.fill"))
         }
+        .font(.system(size: 30))
     }
 }
 
-struct Example_Previews: PreviewProvider {
-    static var previews: some View {
-        ExampleView()
-    }
+#Preview {
+    ExampleView()
 }

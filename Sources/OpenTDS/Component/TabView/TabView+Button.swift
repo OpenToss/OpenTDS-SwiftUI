@@ -46,7 +46,7 @@ public struct TossTabViewButton: View {
         ZStack {
             if rectangleState {
                 RoundedRectangle(cornerRadius: 18)
-                    .foregroundColor(TossColor.generalBackground)
+                    .foregroundColor(TossColor.secondaryBackground)
             }
             VStack(spacing: 3) {
                 image
@@ -57,11 +57,12 @@ public struct TossTabViewButton: View {
                     .padding(2)
                     .scaleEffect(x: animationState == 2 ? 1.1 : 1, y: 1)
                     .scaleEffect(x: 1, y: animationState == 3 ? 1.05 : 1)
+                    .foregroundColor(selected || touchdownState ? TossColor.label : TossColor.tabViewButtonIcon)
                 Text(label)
                     .font(.system(size: 11, weight: .medium))
                     .scaleEffect(animationState == 2 ? 1.05 : 1)
+                    .foregroundColor(selected || touchdownState ? TossColor.label : TossColor.tabViewButtonLabel)
             }
-            .foregroundColor(selected || touchdownState ? TossColor.general : TossColor.secondary)
         }
         .frame(width: 56, height: 56)
         .scaleEffect(animationState == 1 ? 0.9 : 1)
