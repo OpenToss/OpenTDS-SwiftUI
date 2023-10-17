@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 /**
     Animated Tab View of Toss.
@@ -16,12 +17,16 @@ import SwiftUI
 @available(macOS 11, iOS 14, *)
 public struct TossTabView: View {
     
-    @State var selected: Int = 0
+    @State var selection: Binding<Int>?
+    @State var selected: Int
     
     let content: [TossTabItem]
     
-    public init(haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
+    public init(selection: Binding<Int>? = nil,
+                haptic: UIImpactFeedbackGenerator.FeedbackStyle? = .light,
                 @TossTabViewBuilder content: () -> [TossTabItem]) {
+        self.selection = selection
+        self.selected = selection?.wrappedValue ?? 0
         self.content = content()
     }
     
@@ -52,6 +57,9 @@ public struct TossTabView: View {
                         TossTabViewButton(content[idx].title,
                                           content[idx].image,
                                           idx == selected) {
+                            if selection != nil {
+                                selection?.wrappedValue = idx
+                            }
                             if selected != idx {
                                 withAnimation(.easeInOut(duration: 0.2)) {
                                     selected = idx
@@ -71,5 +79,12 @@ public struct TossTabView: View {
             }
         }
         .background(TossColor.background.ignoresSafeArea())
+        .onReceive(Just(selection)) { newValue in
+            if let newValue, selected != newValue.wrappedValue {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    selected = newValue.wrappedValue
+                }
+            }
+        }
     }
 }

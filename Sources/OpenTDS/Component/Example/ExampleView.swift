@@ -1,10 +1,15 @@
 import SwiftUI
 
 struct ExampleView: View {
+    @State var selection: Int = 0
     var body: some View {
         TossTabView {
             TossScrollView("a") {
-                Text("View1")
+                Button {
+                    selection = 1
+                } label: {
+                    Text("btn")
+                }
             }
             .toolbarButton {
                 TossToolbarButton(Image(systemName: "house.fill"), action: {
